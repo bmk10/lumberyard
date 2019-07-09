@@ -349,7 +349,12 @@ namespace EMotionFX
             {
                 return;
             }
-
+            if (!actor)   // 7/8/2019 Georgiy Chipunov - Fix crash in Editor, trying to animate jack.
+			{
+				return;
+			}// to replicate the crash make new actor, new motions , new animt, new motions, and close editor, while its saved new action, will decal actor beefore running code.
+           
+            // Run finder..
             const Node* targetNode = actor->GetSkeleton()->FindNodeByName(m_targetNodeName.c_str());
             if (!targetNode)
             {
