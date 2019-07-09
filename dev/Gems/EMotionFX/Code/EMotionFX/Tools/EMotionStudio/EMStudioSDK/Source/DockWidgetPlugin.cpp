@@ -39,7 +39,10 @@ namespace EMStudio
             mDock->disconnect(this);
 
             EMStudio::GetMainWindow()->removeDockWidget(mDock);
-            delete mDock;
+         //   delete mDock;
+            // delete mDock; // I don't care what memory leaks, cause this to break, but its bigger than me right now to fix
+			// 7/8/2019 - I just want to stop crashing, quick fix. tempfix w\e.
+			// Critical error detected c0000374 Editor.exe has triggered a breakpoint.
         }
     }
 
