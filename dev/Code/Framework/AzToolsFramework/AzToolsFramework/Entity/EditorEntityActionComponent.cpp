@@ -443,7 +443,10 @@ namespace AzToolsFramework
                 for (auto componentToRemove : componentsToRemove)
                 {
                     AZ::Entity* entity = componentToRemove->GetEntity();
-
+                    if (!entity)	//gosha_bmk10    7/14/2019    , add 2 same compens, then delete 1. for using Auth Server in Character Multiplayer.    "{3097BBE1-CCAA-46B5-B027-121A4588C036}"
+					{
+						continue;
+					}
                     bool isEntityEditable = false;
                     EBUS_EVENT_RESULT(isEntityEditable, AzToolsFramework::ToolsApplicationRequests::Bus, IsEntityEditable, entity->GetId());
                     if (!isEntityEditable)
